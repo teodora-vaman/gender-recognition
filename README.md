@@ -1,7 +1,5 @@
 # Gender Recognition CNN
 
-Paper: Dhomne, Amit, Ranjit Kumar, and Vijay Bhan. "**Gender recognition through face using deep learning**." _Procedia computer science_ 132 (2018): 2-10.
-
 ## Task
 Gender Recognition was started with the problem in psychophysical studies to classify gender from human face; it concentrates on the e orts of perceiving human visual processing and recognizing relevant features that can be used to distinguish between female and male individuals. Exploration has proved that the discrepancy between a female face and male face can be used effectively to improvised the result of face recognition software in bio-metrics devices
 
@@ -24,3 +22,8 @@ For this task specifically 1699 males and 1699 females where choosen for trainin
 ## Network
 
 ![image](https://user-images.githubusercontent.com/86794414/227157559-ae3810c8-e257-429f-811d-2a91b0fe4979.png)
+
+## References
+
+Paper: Dhomne, Amit, Ranjit Kumar, and Vijay Bhan. "**Gender recognition through face using deep learning**." _Procedia computer science_ 132 (2018): 2-10.
+
