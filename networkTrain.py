@@ -23,7 +23,7 @@ import icecream as ic
 
 wandb.init(
     # set the wandb project where this run will be logged
-    # mode="disabled",
+    mode="disabled",
     project="GenderRecognition_Network",
     
     # track hyperparameters and run metadata
@@ -46,13 +46,14 @@ torch.manual_seed(seed)
 
 batch_size = 128
 nr_epoci = 15
+image_shape = [3,128,128]
 
-dataset = DatasetCelebA(base_path=base_path, excel_path=excel_name)
+dataset = DatasetCelebA(base_path=base_path, excel_name=excel_name)
 dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-model = CNN(2)
+model = CNN(2, image_shape)
 model.cuda()
 
 loss_function = nn.CrossEntropyLoss(reduction='sum')
@@ -88,7 +89,7 @@ for epoca in range(nr_epoci):
     print("Epoca {} s-a terminat - Acc: {} Loss: {}".format(epoca, accuracy, loss ))
     wandb.log({"loss": loss, "accuracy": accuracy})
 
-    torch.save(model.state_dict(), '.\\checkpoints\\model.pt')
+    # torch.save(model.state_dict(), '.\\checkpoints\\model.pt')
 
 
 

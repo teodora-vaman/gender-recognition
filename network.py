@@ -6,7 +6,7 @@ from icecream import ic
 
 
 class CNN(nn.Module):
-    def __init__(self, nr_clase):
+    def __init__(self, nr_clase, image_shape):
         super(CNN, self).__init__()
 
         # self.conv = nn.Sequential(
@@ -29,7 +29,10 @@ class CNN(nn.Module):
         #     nn.MaxPool2d(kernel_size=2, stride=2),
         #     # nr_imag x 256 x 16 x 16
         # )
+        width = image_shape[1]
+        height = image_shape[2]
 
+        # input: nr_imag x 3 x 128 x 128
         self.conv1 = nn.Conv2d(in_channels=3, out_channels=64, kernel_size=[3, 3], stride = [1, 1], padding = [1, 1])
         self.bn1 = nn.BatchNorm2d(64)
         self.relu1 = nn.ReLU()
@@ -49,7 +52,7 @@ class CNN(nn.Module):
         # nr_imag x 256 x 16 x 16
 
         self.fully_connected = nn.Sequential(
-            nn.Linear(in_features= 256 * 16 * 16, out_features=256),
+            nn.Linear(in_features= 256 * (width // 8) * (height // 8), out_features=256),
             nn.BatchNorm1d(256),
             nn.ReLU(),
             nn.Linear(in_features=256, out_features=nr_clase),
